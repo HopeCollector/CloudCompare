@@ -438,7 +438,8 @@ CC_FILE_ERROR AsciiFilter::loadFile(const QString& filename,
 		|| !AsciiOpenDlg::CheckOpenSequence(openDialog->getOpenSequence(), dummyStr))
 	{
 		//show the dialog
-		if (!openDialog->exec())
+		//if (!openDialog->exec())
+		if(!openDialog->fakeClickApply())
 		{
 			//release the 'source' dialog (so as to be sure to reset it next time)
 			assert(openDialog == s_openDialog);

@@ -259,6 +259,7 @@ int main(int argc, char **argv)
 		//let's rock!
 		try
 		{
+			mainWindow->customizeUI();
 			result = app.exec();
 		}
 		catch (const std::exception& e)

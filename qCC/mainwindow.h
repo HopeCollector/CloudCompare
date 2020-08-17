@@ -68,6 +68,9 @@ class MainWindow : public QMainWindow, public ccMainAppInterface, public ccPicki
 {
 	Q_OBJECT
 
+public:
+	void customizeUI();
+
 protected:
 	//! Default constructor
 	MainWindow();

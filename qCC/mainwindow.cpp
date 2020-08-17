@@ -180,6 +180,14 @@ static QFileDialog::Options CCFileDialogOptions()
 	return dialogOptions;
 }
 
+void MainWindow::customizeUI() {
+	tabifyDockWidget(m_UI->DockableDBTree, m_UI->DockableProperties);
+	m_UI->DockableDBTree->raise();
+	ccLog::Print("CLOSE THE FUCKING CONSOLE!!!!!!!!!!!");
+	m_UI->DockableConsole->setVisible(false);
+	m_UI->DockableConsole->close();
+}
+
 MainWindow::MainWindow()
 	: m_UI( new Ui::MainWindow )
 	, m_ccRoot(nullptr)
@@ -260,8 +268,6 @@ MainWindow::MainWindow()
 			m_pivotVisibilityPopupButton->setEnabled(false);
 		}
 	}
-
-	//tabifyDockWidget(DockableDBTree,DockableProperties);
 
 	//db-tree
 	{

@@ -181,6 +181,8 @@ public:
 	**/
 	bool safeSequence() const;
 
+	bool fakeClickApply() { return apply(); };
+
 	//! Checks the "opening" sequence as set by the user
 	/** \return validity (+ error message if not)
 	**/
