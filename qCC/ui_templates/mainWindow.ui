@@ -39,7 +39,7 @@
      <x>0</x>
      <y>0</y>
      <width>1024</width>
-     <height>31</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -522,7 +522,7 @@
     <set>QDockWidget::DockWidgetFloatable|QDockWidget::DockWidgetMovable</set>
    </property>
    <property name="windowTitle">
-    <string>DB Tree</string>
+    <string>点云</string>
    </property>
    <attribute name="dockWidgetArea">
     <number>1</number>
@@ -1148,7 +1148,7 @@ QTreeView::branch:open:has-children:has-siblings  {
    </property>
    <property name="shortcut">
     <string>T</string>
-   </property>  
+   </property>
   </action>
   <action name="actionTranslateRotate">
    <property name="checkable">
@@ -2371,7 +2371,7 @@ QTreeView::branch:open:has-children:has-siblings  {
    </property>
    <property name="shortcut">
     <string>X</string>
-   </property>   
+   </property>
   </action>
   <action name="actionEditGlobalShiftAndScale">
    <property name="text">
@@ -2532,7 +2532,7 @@ QTreeView::branch:open:has-children:has-siblings  {
    </property>
    <property name="shortcut">
     <string>E</string>
-   </property>   
+   </property>
   </action>
   <action name="actionInterpolateColors">
    <property name="text">
