@@ -183,9 +183,65 @@ static QFileDialog::Options CCFileDialogOptions()
 void MainWindow::customizeUI() {
 	tabifyDockWidget(m_UI->DockableDBTree, m_UI->DockableProperties);
 	m_UI->DockableDBTree->raise();
-	ccLog::Print("CLOSE THE FUCKING CONSOLE!!!!!!!!!!!");
-	m_UI->DockableConsole->setVisible(false);
-	m_UI->DockableConsole->close();
+
+	// new toolbar
+	QAction* actionMeasureVolume;
+	{
+		for (auto tb : findChildren<QToolBar*>())
+			tb->setVisible(false);
+
+		auto toolbar = new QToolBar("SimpleEdition Toolbar", this);
+		toolbar->addAction(m_UI->actionOpen);
+		toolbar->addAction(m_UI->actionSave);
+		toolbar->addSeparator();
+		toolbar->addAction(m_UI->actionPointPicking);
+		toolbar->addAction(m_UI->actionSegment);
+		toolbar->addAction(m_UI->actionTranslateRotate);
+		toolbar->addAction(m_UI->actionCrossSection);
+		toolbar->addSeparator();
+		for (auto action : m_pluginUIManager->mainPluginToolbar()->actions()) {
+			if (action->text().contains("Volume")) {
+				toolbar->addAction(action);
+				actionMeasureVolume = action;
+				break;
+			}
+		}
+		addToolBar(Qt::TopToolBarArea, toolbar);
+	}
+
+	// new menu bar
+	{
+		for (auto ac : menuBar()->actions()) {
+			ccLog::Print(ac->text());
+			ac->setVisible(false);
+		}
+		auto fileMenu = menuBar()->addMenu(QString::fromLocal8Bit("文件"));
+		fileMenu->addAction(m_UI->actionOpen);
+		fileMenu->addAction(m_UI->actionSave);
+
+		auto funcMenu = menuBar()->addMenu(QString::fromLocal8Bit("功能"));
+		funcMenu->addAction(m_UI->actionPointPicking);
+		funcMenu->addAction(m_UI->actionSegment);
+		funcMenu->addAction(m_UI->actionTranslateRotate);
+		funcMenu->addAction(m_UI->actionCrossSection);
+		funcMenu->addAction(m_UI->actionSORFilter);
+
+		auto helpAction = menuBar()->addAction(QString::fromLocal8Bit("关于..."));
+		connect(helpAction, &QAction::triggered, this, [=]() {
+			QMessageBox::information(this
+				, QString::fromLocal8Bit("关于")
+				, QString::fromLocal8Bit("FVM 体积测量软件"));
+		});
+
+	}
+
+	QTimer* t = new QTimer(this);
+	connect(t, &QTimer::timeout, this, [=]() {
+		m_UI->DockableConsole->setVisible(false);
+		t->stop();
+		delete t;
+	});
+	t->start(1000);
 }
 
 MainWindow::MainWindow()
