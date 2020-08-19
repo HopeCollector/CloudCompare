@@ -3069,6 +3069,15 @@ QTreeView::branch:open:has-children:has-siblings  {
     <string>Smooth</string>
    </property>
   </action>
+  <action name="actionOpenXYZI">
+   <property name="icon">
+    <iconset resource="../icons.qrc">
+     <normaloff>:/CC/images/ccOpen.png</normaloff>:/CC/images/ccOpen.png</iconset>
+   </property>
+   <property name="text">
+    <string>OpenXYZI</string>
+   </property>
+  </action>
  </widget>
  <customwidgets>
   <customwidget>

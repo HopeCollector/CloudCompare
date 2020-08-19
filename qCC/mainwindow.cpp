@@ -184,14 +184,48 @@ void MainWindow::customizeUI() {
 	tabifyDockWidget(m_UI->DockableDBTree, m_UI->DockableProperties);
 	m_UI->DockableDBTree->raise();
 
-	// new toolbar
 	QAction* actionMeasureVolume;
+	{
+		for (auto action : m_pluginUIManager->mainPluginToolbar()->actions()) {
+			if (action->text().contains("Volume")) {
+				actionMeasureVolume = action;
+				break;
+			}
+		}
+
+		connect(m_UI->actionOpenXYZI, &QAction::triggered, this, [=]() {
+			//persistent settings
+			QSettings settings;
+			settings.beginGroup(ccPS::LoadFile());
+			QString currentPath = settings.value(ccPS::CurrentPath(), ccFileUtils::defaultDocPath()).toString();
+
+			//file choosing dialog
+			QStringList selectedFiles = QFileDialog::getOpenFileNames(this,
+				QString::fromLocal8Bit("打开 xyzi 文件"),
+				currentPath,
+				"XYZI (*.xyzi)",
+				nullptr,
+				CCFileDialogOptions());
+			if (selectedFiles.isEmpty())
+				return;
+
+			//save last loading parameters
+			currentPath = QFileInfo(selectedFiles[0]).absolutePath();
+			settings.setValue(ccPS::CurrentPath(), currentPath);
+			settings.endGroup();
+
+			//load files
+			addToDB(selectedFiles);
+		});
+	}
+
+	// new toolbar
 	{
 		for (auto tb : findChildren<QToolBar*>())
 			tb->setVisible(false);
 
 		auto toolbar = new QToolBar("SimpleEdition Toolbar", this);
-		toolbar->addAction(m_UI->actionOpen);
+		toolbar->addAction(m_UI->actionOpenXYZI);
 		toolbar->addAction(m_UI->actionSave);
 		toolbar->addSeparator();
 		toolbar->addAction(m_UI->actionPointPicking);
@@ -199,20 +233,13 @@ void MainWindow::customizeUI() {
 		toolbar->addAction(m_UI->actionTranslateRotate);
 		toolbar->addAction(m_UI->actionCrossSection);
 		toolbar->addSeparator();
-		for (auto action : m_pluginUIManager->mainPluginToolbar()->actions()) {
-			if (action->text().contains("Volume")) {
-				toolbar->addAction(action);
-				actionMeasureVolume = action;
-				break;
-			}
-		}
+		toolbar->addAction(actionMeasureVolume);
 		addToolBar(Qt::TopToolBarArea, toolbar);
 	}
 
 	// new menu bar
 	{
 		for (auto ac : menuBar()->actions()) {
-			ccLog::Print(ac->text());
 			ac->setVisible(false);
 		}
 		auto fileMenu = menuBar()->addMenu(QString::fromLocal8Bit("文件"));
@@ -235,13 +262,13 @@ void MainWindow::customizeUI() {
 
 	}
 
-	QTimer* t = new QTimer(this);
+	/*QTimer* t = new QTimer(this);
 	connect(t, &QTimer::timeout, this, [=]() {
 		m_UI->DockableConsole->setVisible(false);
 		t->stop();
 		delete t;
 	});
-	t->start(1000);
+	t->start(1000);*/
 }
 
 MainWindow::MainWindow()

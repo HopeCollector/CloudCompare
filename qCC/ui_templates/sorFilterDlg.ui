@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>300</width>
+    <width>342</width>
     <height>150</height>
    </rect>
   </property>
@@ -19,8 +19,7 @@
      <item row="0" column="0">
       <widget class="QLabel" name="label">
        <property name="text">
-        <string>Number of points to use for
-mean distance estimation</string>
+        <string>参数1—用于估计平均距离的点的个数</string>
        </property>
       </widget>
      </item>
@@ -43,8 +42,7 @@ mean distance estimation</string>
      <item row="1" column="0">
       <widget class="QLabel" name="label_4">
        <property name="text">
-        <string>Standard deviation
-multiplier threshold (nSigma)</string>
+        <string>参数2—标准差</string>
        </property>
       </widget>
      </item>
