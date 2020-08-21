@@ -19,7 +19,8 @@
      <item row="0" column="0">
       <widget class="QLabel" name="label">
        <property name="text">
-        <string>参数1—用于估计平均距离的点的个数</string>
+        <string>Number of points to use for
+mean distance estimation</string>
        </property>
       </widget>
      </item>
@@ -42,7 +43,8 @@
      <item row="1" column="0">
       <widget class="QLabel" name="label_4">
        <property name="text">
-        <string>参数2—标准差</string>
+        <string>Standard deviation
+multiplier threshold (nSigma)</string>
        </property>
       </widget>
      </item>

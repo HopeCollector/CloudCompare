@@ -522,7 +522,7 @@
     <set>QDockWidget::DockWidgetFloatable|QDockWidget::DockWidgetMovable</set>
    </property>
    <property name="windowTitle">
-    <string>点云</string>
+    <string>DB Tree</string>
    </property>
    <attribute name="dockWidgetArea">
     <number>1</number>
