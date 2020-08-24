@@ -72,14 +72,14 @@ void ccTranslationManager::populateMenu( QMenu *menu, const QString &pathToTrans
 	
 	group->setExclusive( true );
 	
-	QAction	*action = group->addAction( tr( "No Translation (English)" ) );
+	QAction	*action = group->addAction( tr( "No Translation (Chinese)" ) );
 	
 	action->setCheckable( true );
 	action->setChecked( true );
 	
 	connect( action, &QAction::triggered, this, [this] ()
 	{
-		setLanguagePref( QStringLiteral( "en" ) );
+		setLanguagePref( QStringLiteral( "zh_CN" ) );
 	} );
 	
 	QAction	*separator = new QAction( group );
