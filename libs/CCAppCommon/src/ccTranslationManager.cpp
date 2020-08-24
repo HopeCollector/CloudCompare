@@ -79,7 +79,7 @@ void ccTranslationManager::populateMenu( QMenu *menu, const QString &pathToTrans
 	
 	connect( action, &QAction::triggered, this, [this] ()
 	{
-		setLanguagePref( QStringLiteral( "zh_CN" ) );
+		setLanguagePref( QStringLiteral( "zh" ) );
 	} );
 	
 	QAction	*separator = new QAction( group );
@@ -93,7 +93,8 @@ void ccTranslationManager::populateMenu( QMenu *menu, const QString &pathToTrans
 	
 		action->setCheckable( true );
 		
-		if ( currentLanguage == langInfo.first )
+		// if ( currentLanguage == langInfo.first )
+		if ("zh" == langInfo.first)
 		{
 			action->setChecked( true );
 		}

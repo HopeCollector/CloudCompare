@@ -226,14 +226,11 @@ void MainWindow::customizeUI() {
 
 		auto toolbar = new QToolBar("SimpleEdition Toolbar", this);
 		toolbar->addAction(m_UI->actionOpenXYZI);
-		toolbar->addAction(m_UI->actionSave);
-		toolbar->addSeparator();
-		toolbar->addAction(m_UI->actionPointPicking);
 		toolbar->addAction(m_UI->actionSegment);
-		toolbar->addAction(m_UI->actionTranslateRotate);
-		toolbar->addAction(m_UI->actionCrossSection);
-		toolbar->addSeparator();
 		toolbar->addAction(actionMeasureVolume);
+		toolbar->addSeparator();
+		toolbar->addAction(m_UI->actionSORFilter);
+		toolbar->addAction(m_UI->actionPointPicking);
 		addToolBar(Qt::TopToolBarArea, toolbar);
 	}
 
