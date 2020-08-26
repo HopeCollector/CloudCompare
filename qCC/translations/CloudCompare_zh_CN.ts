@@ -6238,13 +6238,13 @@ de Gauss,
     <message>
         <location filename="../ui_templates/mainWindow.ui" line="821"/>
         <source>&amp;Quit</source>
-        <translation>&amp;Salir</translation>
+        <translation>&amp;退出</translation>
     </message>
     <message>
         <location filename="../ui_templates/mainWindow.ui" line="824"/>
         <location filename="../mainwindow.cpp" line="5862"/>
         <source>Quit</source>
-        <translation>Salir</translation>
+        <translation>退出</translation>
     </message>
     <message>
         <location filename="../ui_templates/mainWindow.ui" line="836"/>
@@ -8093,7 +8093,7 @@ de Gauss,
     <message>
         <location filename="../ui_templates/mainWindow.ui" line="2727"/>
         <source>Statistical Outlier Filter (remove the points far from their neighbors)</source>
-        <translation>Filtro de Remoción de Valores Estadísticamente Atípicos, SOR por sus siglas en inglés (remueve los puntos alejados de sus vecinos)</translation>
+        <translation>去除杂点（去除稀疏的杂点）</translation>
     </message>
     <message>
         <location filename="../ui_templates/mainWindow.ui" line="2739"/>
@@ -10789,7 +10789,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../ccCommandLineCommands.cpp" line="2579"/>
         <source>Missing parameter: sigma multiplier after number of neighbors (SOR)</source>
-        <translation>Parámetro faltante: factor de sigma luego del número de vecinos (SOR)</translation>
+        <translation type="unfinished">参数不足：sigma multiplier after number of neighbors (SOR)</translation>
     </message>
     <message>
         <location filename="../ccCommandLineCommands.cpp" line="2585"/>
@@ -10814,7 +10814,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../ccCommandLineCommands.cpp" line="2646"/>
         <source>Failed to apply SOR filter on cloud &apos;%1&apos;! (not enough memory?)</source>
-        <translation>¡Fallo al aplicar el filtro SOR en la nube &apos;%1&apos;! (¿memoria insuficiente?)</translation>
+        <translation>无法对点云 &apos;%1&apos;! 执行杂点去除操作（运行内存可能不足）</translation>
     </message>
     <message>
         <location filename="../ccCommandLineCommands.cpp" line="2660"/>

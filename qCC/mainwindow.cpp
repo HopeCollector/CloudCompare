@@ -181,8 +181,14 @@ static QFileDialog::Options CCFileDialogOptions()
 }
 
 void MainWindow::customizeUI() {
-	tabifyDockWidget(m_UI->DockableDBTree, m_UI->DockableProperties);
-	m_UI->DockableDBTree->raise();
+	// set dock widget
+	{
+		tabifyDockWidget(m_UI->DockableDBTree, m_UI->DockableProperties);
+		m_UI->DockableDBTree->setContextMenuPolicy(Qt::PreventContextMenu);
+		m_UI->DockableProperties->setContextMenuPolicy(Qt::PreventContextMenu);
+		m_UI->DockableProperties->setVisible(false);
+		m_UI->DockableDBTree->raise();
+	}
 
 	QAction* actionMeasureVolume;
 	{
@@ -259,10 +265,16 @@ void MainWindow::customizeUI() {
 
 	}
 
+	connect(m_UI->DockableConsole, &QDockWidget::visibilityChanged,
+		this, [=]() {m_UI->DockableConsole->setVisible(false); });
+	m_UI->DockableConsole->setVisible(false);
+
 	/*QTimer* t = new QTimer(this);
 	connect(t, &QTimer::timeout, this, [=]() {
 		m_UI->DockableConsole->setVisible(false);
 		t->stop();
+		connect(m_UI->DockableConsole, &QDockWidget::visibilityChanged,
+			this, [=]() {m_UI->DockableConsole->setVisible(false); });
 		delete t;
 	});
 	t->start(1000);*/
@@ -293,7 +305,8 @@ MainWindow::MainWindow()
 {
 	m_UI->setupUi( this );
 
-	setWindowTitle(QStringLiteral("CloudCompare v") + ccApp->versionLongStr(false));
+	// setWindowTitle(QStringLiteral("CloudCompare v") + ccApp->versionLongStr(false));
+	setWindowTitle(QString::fromLocal8Bit("FVM Ìå»ý²âÁ¿"));
 	
 	m_pluginUIManager = new ccPluginUIManager( this, this );
 	

@@ -43,7 +43,8 @@ void ccTranslationManager::registerTranslatorFile( const QString &prefix, const 
 
 void ccTranslationManager::loadTranslations()
 {
-	const QLocale	locale( languagePref() );
+	// const QLocale	locale( languagePref() );
+	const QLocale	locale("zh_CN");
 	
 	const auto	&info = mTranslatorFileInfo;
 	
@@ -72,14 +73,14 @@ void ccTranslationManager::populateMenu( QMenu *menu, const QString &pathToTrans
 	
 	group->setExclusive( true );
 	
-	QAction	*action = group->addAction( tr( "No Translation (Chinese)" ) );
+	QAction	*action = group->addAction( tr( "No Translation (English)" ) );
 	
 	action->setCheckable( true );
 	action->setChecked( true );
 	
 	connect( action, &QAction::triggered, this, [this] ()
 	{
-		setLanguagePref( QStringLiteral( "zh" ) );
+		setLanguagePref( QStringLiteral( "en" ) );
 	} );
 	
 	QAction	*separator = new QAction( group );
@@ -93,8 +94,7 @@ void ccTranslationManager::populateMenu( QMenu *menu, const QString &pathToTrans
 	
 		action->setCheckable( true );
 		
-		// if ( currentLanguage == langInfo.first )
-		if ("zh" == langInfo.first)
+		if ( currentLanguage == langInfo.first )
 		{
 			action->setChecked( true );
 		}

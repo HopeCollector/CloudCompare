@@ -27,7 +27,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="../icons.qrc">
-    <normaloff>:/CC/Icons/images/icon/cc_icon_16.png</normaloff>:/CC/Icons/images/icon/cc_icon_16.png</iconset>
+    <normaloff>:/CC/images/icon/FVM.png</normaloff>:/CC/images/icon/FVM.png</iconset>
   </property>
   <property name="autoFillBackground">
    <bool>true</bool>
@@ -3075,7 +3075,7 @@ QTreeView::branch:open:has-children:has-siblings  {
      <normaloff>:/CC/images/ccOpen.png</normaloff>:/CC/images/ccOpen.png</iconset>
    </property>
    <property name="text">
-    <string>OpenXYZI</string>
+    <string>打开 XYZI 文件</string>
    </property>
   </action>
  </widget>
